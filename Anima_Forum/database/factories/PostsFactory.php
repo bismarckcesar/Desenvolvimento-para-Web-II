@@ -25,7 +25,7 @@ class PostsFactory extends Factory
             'title' => $this->faker->sentence(3),
             'subtitle' => $this->faker->sentence(3),
             'contents' => $this->faker->sentence(20),
-            'comments' => $this->faker->sentence(10),
+            
             
         ];
     }

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\PostsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,5 +21,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::post('/post/create',[PostsController::class,'store'])->middleware(['auth'])->name('create_post');
+
+// Route::post('/post/create',[PostsController::class,'create']);
 
 require __DIR__.'/auth.php';

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\posts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -15,6 +17,7 @@ class PostsController extends Controller
     public function index()
     {
         //
+        
     }
 
     /**
@@ -24,7 +27,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+       return "CREATE";
     }
 
     /**
@@ -35,7 +38,14 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Posts::create([
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'contents' => $request->contents,
+            'user_id' => Auth::user()->id
+        ]);
+        return Redirect::route('dashboard');
+        // return $request;
     }
 
     /**
